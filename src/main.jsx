@@ -14,6 +14,7 @@ import Details from './pages/Details'
 import Chackout from './pages/Chackout'
 import MyOrder from './pages/MyOrder'
  import PrivateRoute from './routes/PrivateRoute'
+import About from './components/home/About'
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
       {
         path: "/myOrder",
         element:<MyOrder></MyOrder>,
+      },
+      {
+        path: "/about",
+        element: <About />,
+        loader:()=>fetch('http://localhost:5000/productsCount')
       },
     ],
   },

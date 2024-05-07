@@ -11,7 +11,7 @@ const Categorey = () => {
 
     const items = useCartItems()
     const catitems = useCategorey();
-    const [categorey, setcategorey] = useState(items)
+    const [categorey, setcategorey] = useState(items || [])
 
     const catfilter = item => {
         const filteritems = items.filter(p => p.category === item)

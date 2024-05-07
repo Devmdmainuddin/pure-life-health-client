@@ -1,4 +1,4 @@
-import About from "../components/home/About";
+// import About from "../components/home/About";
 import Banner from "../components/home/Banner";
 import Categorey from "../components/home/Categorey";
 import Service from "../components/home/Service";
@@ -10,7 +10,7 @@ const Home = () => {
             
             <Banner></Banner>
             <Categorey></Categorey>
-            <About></About>
+            {/* <About></About> */}
             <Service></Service>
             
         </div>
