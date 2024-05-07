@@ -1,71 +1,36 @@
 // import { data } from 'autoprefixer';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+// import axios from 'axios';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useCategorey from '../../hook/useCategorey';
+import useCartItems from '../../hook/useCartItems';
 // import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 // import 'react-tabs/style/react-tabs.css';
 
 const Categorey = () => {
 
-    const [items, setitems] = useState([])
-    
-    const [catitems, setcatitems] = useState([])
+    const items = useCartItems()
+    const catitems = useCategorey();
     const [categorey, setcategorey] = useState(items)
 
-
-
-
-    useEffect(() => {
-
-        // const getData = async () => {
-        //     const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/cartItems`)
-        //     setitems(data) 
-        // }
-        // getData()
-
-        axios.get(`${import.meta.env.VITE_API_URL}/cartItems`)
-            .then(data => {
-                console.log(data.data);
-                setitems(data.data)
-            })
-
-
-        // const getCat = async () => {
-        //     const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/categorey`)
-
-        //     setcatitems(data)
-        // }
-        // getCat()
-
-
-
-        axios.get(`${import.meta.env.VITE_API_URL}/categorey`)
-            .then(data => {
-                console.log(data.data);
-                setcatitems(data.data)
-            })
-
-
-
-    }, [])
-
     const catfilter = item => {
-        const catitems = items.filter(p => p.category === item)
-        
-        setcategorey(catitems)
+        const filteritems = items.filter(p => p.category === item)
+        setcategorey(filteritems)
     }
-
 
     return (
         <div>
-            <button className="" type="button" onClick={() => setcategorey(items)}>all</button>
-            {catitems.map(cate => <p key={cate._id} onClick={() => catfilter(cate.categorey)}>{cate.categorey
-            }</p>
-            )}
+            <div className='flex gap-x-4 justify-center'>
+                <button className="" type="button" onClick={() => setcategorey(items)}>all</button>
+                {catitems.map(cate => <p key={cate._id} onClick={() => catfilter(cate.categorey)}>{cate.categorey
+                }</p>
+                )}
+            </div>
+
 
 
             {/* {cat.filter(cat=>cat.category===cat.category).map(c=>)} */}
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
 
                 {categorey.map(item =>
@@ -95,12 +60,6 @@ const Categorey = () => {
 
                     </article>
                 )}
-
-
-
-
-
-
             </div>
 
 

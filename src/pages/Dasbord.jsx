@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import useAuth from "../hook/useAuth";
 import axios from 'axios'
 import CreateCategorey from "../components/CreateCategorey";
@@ -7,26 +7,28 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import {  useNavigate } from "react-router-dom";
+import useCategorey from "../hook/useCategorey";
 
 const Dasbord = () => {
   const { user } = useAuth() || {};
-  const [catitems, setcatitems] = useState([])
+  const categorey = useCategorey();
+  // const [catitems, setcatitems] = useState([])
   const [startDate, setStartDate] = useState(new Date());
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const catedata = async () =>{
-      const { data } = await axios(`${import.meta.env.VITE_API_URL}/categorey`)
-      setcatitems(data);
-    }
-    catedata()
-    // fetch('http://localhost:5000/categorey')
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //         setcatitems(data);
+//   useEffect(() => {
+//     const catedata = async () =>{
+//       const { data } = await axios(`${import.meta.env.VITE_API_URL}/categorey`)
+//       setcatitems(data);
+//     }
+//     catedata()
+//     // fetch('http://localhost:5000/categorey')
+//     //     .then((res) => res.json())
+//     //     .then((data) => {
+//     //         setcatitems(data);
           
-    //     });
-}, [])
+//     //     });
+// }, [])
 
 
   const handleAddProduct =async (e) => {
@@ -61,6 +63,7 @@ const Dasbord = () => {
     //       alert('create categorey successfully')
     //   }
     // })
+    
     try{
 const {data}= await axios.post(`${import.meta.env.VITE_API_URL}/addCartItems`,info)
 console.log(data)
@@ -136,7 +139,7 @@ navigate('/myOrder')
               type="text"
               placeholder="Select category"
             >
-              {catitems.map(cat=><option key={cat._id} value={`${cat.categorey}`} selected>
+              {categorey.map(cat=><option key={cat._id} value={`${cat.categorey}`} selected>
               {cat.categorey}
               </option>)}
               

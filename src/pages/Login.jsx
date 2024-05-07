@@ -9,7 +9,7 @@ import { IoMdEyeOff } from "react-icons/io";
 import { FaEye } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import Swal from 'sweetalert2'
-import axios from "axios";
+// import axios from "axios";
 
 const Login = () => {
     const emailRaf = useRef(null)
@@ -28,6 +28,8 @@ const Login = () => {
         const { email, password } = data;
         signInUser(email, password)
             .then((res) => {
+                const user = res.user;
+                console.log(user)
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
