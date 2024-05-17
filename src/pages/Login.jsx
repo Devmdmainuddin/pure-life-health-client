@@ -14,12 +14,10 @@ import Swal from 'sweetalert2'
 const Login = () => {
     const emailRaf = useRef(null)
     const { register, handleSubmit, formState: { errors } } = useForm();
-
     const [showpassword, setshowpassword] = useState(null)
     const navigate = useNavigate();
     const location = useLocation();
     const { signInUser, setloader, googleLogin, githubLogin } = useContext(AuthContext)
-
     const from = location?.state || "/";
 
 
@@ -38,7 +36,7 @@ const Login = () => {
                     timer: 1500
                 });
              
-                navigate(from)
+                navigate(from,{replace:true})
                 // if (res.data.success) {
 
                 //            ;

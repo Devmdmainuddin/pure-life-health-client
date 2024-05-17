@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
-import useAllCart from "../../hook/useAllCart";
+// import useAllCart from "../../hook/useAllCart";
 import { useEffect, useState } from "react";
 import axios from "axios";
 

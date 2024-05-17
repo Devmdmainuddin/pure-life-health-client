@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 
 
 const useAllCart = () => {
-// const [items,setitems]=useState([])
+const [items,setitems]=useState([])
 
-// useEffect(()=>{
-//     axios.get(`${import.meta.env.VITE_API_URL}/items?page=${currentPage}&size=${itemsperpage}`)
-//     .then(data => {
-//         setitems(data.data)
-//     })
-// },[])
+useEffect(()=>{
+    axios.get(`${import.meta.env.VITE_API_URL}/items`)
+    .then(data => {
+        setitems(data.data)
+    })
+},[])
 
 
-//     return items
+    return items
 };
 
 export default useAllCart;
